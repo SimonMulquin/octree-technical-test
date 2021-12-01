@@ -22,6 +22,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>My page</title>
         <meta
+          name="description"
+          content="Technical test for Octree by Simon Mulquin"
+        />
+        <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
