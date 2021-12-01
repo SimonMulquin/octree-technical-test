@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>Tiny tasks</title>
         <meta
           name="description"
           content="Technical test for Octree by Simon Mulquin"
