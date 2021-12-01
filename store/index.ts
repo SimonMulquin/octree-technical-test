@@ -4,15 +4,17 @@ import { Task } from "./types";
 
 type State = {
   tasks: Array<Task>;
+  createTask: (task: Task) => void;
+  deleteTask: (id: string) => void;
 };
 
 const useStore = create<State>((set) => ({
   tasks: [],
-  createTask: (task: Task) =>
+  createTask: (task) =>
     set(({ tasks }) => ({
       tasks: [...tasks, { ...task, id: uuidv4(), checked: false }],
     })),
-  deleteTask: (id: string) =>
+  deleteTask: (id) =>
     set(({ tasks }) => ({ tasks: tasks.filter((task) => task.id !== id) })),
 }));
 
