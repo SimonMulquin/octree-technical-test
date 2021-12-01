@@ -10,5 +10,5 @@ type TaskEditableFields = {
 export type Task = TaskMandatoryFields & TaskEditableFields;
 
 export type TaskSafeUpdateObject = {
-  [K in keyof TaskEditableFields]: TaskEditableFields[K] | undefined;
+  [K in keyof TaskEditableFields]?: TaskEditableFields[K];
 } & TaskMandatoryFields;
