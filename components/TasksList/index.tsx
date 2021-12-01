@@ -8,6 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import useStore from "../../store";
 
 // Most of the code from MUI doc: https://v4.mui.com/components/lists/#checkbox
 const useStyles = makeStyles((theme) => ({
@@ -20,47 +21,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TasksList() {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([0]);
-
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
+  const { tasks, deleteTask } = useStore();
 
   return (
     <List className={classes.root}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
-
+      {tasks.map(({ id, title, checked }) => {
         return (
-          <ListItem
-            key={value}
-            role={undefined}
-            dense
-            button
-            onClick={handleToggle(value)}
-          >
+          <ListItem key={id} role={undefined} dense button>
             <ListItemIcon>
               <Checkbox
                 edge="start"
-                checked={checked.indexOf(value) !== -1}
+                checked={checked}
                 tabIndex={-1}
                 disableRipple
-                inputProps={{ "aria-labelledby": labelId }}
+                inputProps={{ "aria-labelledby": id }}
               />
             </ListItemIcon>
-            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+            <ListItemText id={id} primary={title} />
             <ListItemSecondaryAction>
               <IconButton edge="end" aria-label="delete">
-                <DeleteIcon />
+                <DeleteIcon onClick={() => deleteTask(id)} />
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
