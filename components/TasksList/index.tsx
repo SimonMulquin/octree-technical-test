@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TasksList() {
   const classes = useStyles();
-  const { tasks, deleteTask } = useStore();
+  const { tasks, updateTask, deleteTask } = useStore();
 
   return (
     <List className={classes.root}>
@@ -35,6 +35,7 @@ export default function TasksList() {
                 tabIndex={-1}
                 disableRipple
                 inputProps={{ "aria-labelledby": id }}
+                onClick={() => updateTask({ id, checked: !checked })}
               />
             </ListItemIcon>
             <ListItemText id={id} primary={title} />
