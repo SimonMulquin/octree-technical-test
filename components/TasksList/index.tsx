@@ -59,7 +59,7 @@ export default function TasksList() {
             </ListItemIcon>
             <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="comments">
+              <IconButton edge="end" aria-label="delete">
                 <DeleteIcon />
               </IconButton>
             </ListItemSecondaryAction>
