@@ -4,7 +4,7 @@ import { Task, TaskSafeUpdateObject } from "./types";
 
 type State = {
   tasks: Array<Task>;
-  createTask: (task: Task) => void;
+  createTask: (task: Omit<Task, "id">) => void;
   updateTask: (updateObject: TaskSafeUpdateObject) => void;
   deleteTask: (id: string) => void;
 };
@@ -32,5 +32,5 @@ const useStore = create<State>((set) => ({
 }));
 
 // Export types
-export type { Task };
+export type { Task, TaskSafeUpdateObject };
 export default useStore;
