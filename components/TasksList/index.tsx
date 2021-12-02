@@ -40,8 +40,12 @@ export default function TasksList() {
             </ListItemIcon>
             <ListItemText id={id} primary={title} />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete">
-                <DeleteIcon onClick={() => deleteTask(id)} />
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() => deleteTask(id)}
+              >
+                <DeleteIcon />
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
