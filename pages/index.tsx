@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 import SearchAppBar from "../components/SearchAppBar";
 import TasksList from "../components/TasksList";
+import CreateTaskForm from "../components/CreateTaskForm";
 
 const Home: NextPage = () => {
   return (
@@ -10,6 +11,7 @@ const Home: NextPage = () => {
       <SearchAppBar />
       <main className={styles.main}>
         <TasksList />
+        <CreateTaskForm />
       </main>
     </div>
   );
