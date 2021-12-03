@@ -36,16 +36,19 @@ const CreateTaskForm = () => {
             }
             render={({ input, meta }) => (
               <TextField
-                variant="outlined"
+                variant="filled"
+                helperText={meta.touched && meta.error ? meta.error : null}
                 label="Title"
                 {...input}
                 error={meta.touched && meta.error}
               />
             )}
           />
-          <Button variant="contained" color="primary" type="submit">
-            Create task
-          </Button>
+          <div style={{ margin: "16px" }}>
+            <Button variant="contained" color="primary" type="submit">
+              Create task
+            </Button>
+          </div>
         </form>
       )}
     />
