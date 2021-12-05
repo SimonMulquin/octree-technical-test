@@ -43,7 +43,7 @@ const CreateTaskForm = () => {
                 helperText={meta.touched && meta.error ? meta.error : null}
                 label="Title"
                 {...input}
-                error={meta.touched && meta.error}
+                error={!meta.pristine && meta.error}
               />
             )}
           />
