@@ -20,19 +20,22 @@ const CreateTaskForm = () => {
   return (
     <Form
       onSubmit={createTask}
-      render={({ handleSubmit }) => (
+      render={({ handleSubmit, form: { reset } }) => (
         <form
           className={classes.form}
           noValidate
           autoComplete="off"
-          onSubmit={handleSubmit}
+          onSubmit={(e) => {
+            handleSubmit(e);
+            reset();
+          }}
         >
           <Field
             name="title"
             validate={(value) =>
               typeof value === "string" && value.length >= 1
                 ? undefined
-                : "Title should be at least one character stringF"
+                : "Title should be at least one character string"
             }
             render={({ input, meta }) => (
               <TextField
