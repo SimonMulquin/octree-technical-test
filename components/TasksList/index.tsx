@@ -19,13 +19,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TasksList() {
+export default function TasksList({ searchValue }: { searchValue: string }) {
   const classes = useStyles();
   const { tasks, updateTask, deleteTask } = useStore();
 
   return (
     <List className={classes.root}>
       {tasks.map(({ id, title, checked }) => {
+        if (!title.includes(searchValue)) {
+          return null;
+        }
+
         return (
           <ListItem key={id} role={undefined} dense button>
             <ListItemIcon>
